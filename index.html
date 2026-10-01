@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza House</title>
+<style>
+body{margin:0;font-family:Arial;background:#f5f5f5;color:#222}
+header{background:#e63946;color:white;text-align:center;padding:25px}
+.menu{max-width:650px;margin:auto;padding:20px}
+.pizza{background:white;margin-bottom:20px;padding:15px;border-radius:18px;box-shadow:0 3px 12px #bbb}
+.pizza img{width:100%;height:230px;object-fit:cover;border-radius:14px}
+h2{margin-bottom:8px}.price{font-size:21px;font-weight:bold}
+button{background:#e63946;color:white;border:0;padding:13px 20px;border-radius:10px;font-size:16px;margin-top:10px}
+#order{display:none;background:white;margin:20px;padding:20px;border-radius:18px}
+input{width:100%;padding:13px;margin:8px 0;box-sizing:border-box;border:1px solid #ccc;border-radius:9px;font-size:16px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🍕 Pizza House</h1>
+<p>Самая вкусная пицца рядом!</p>
+</header>
+
+<div class="menu">
+
+<div class="pizza">
+<img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=1000&q=90">
+<h2>Пепперони 🍕</h2>
+<p>Сыр, пепперони и томатный соус.</p>
+<div class="price">2500 ₸</div>
+<button onclick="buy('Пепперони',2500)">Заказать</button>
+</div>
+
+<div class="pizza">
+<img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=90">
+<h2>Маргарита 🍅</h2>
+<p>Томатный соус, сыр и помидоры.</p>
+<div class="price">2200 ₸</div>
+<button onclick="buy('Маргарита',2200)">Заказать</button>
+</div>
+
+<div class="pizza">
+<img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=90">
+<h2>4 сыра 🧀</h2>
+<p>Четыре вида сыра и сливочный соус.</p>
+<div class="price">2800 ₸</div>
+<button onclick="buy('4 сыра',2800)">Заказать</button>
+</div>
+
+</div>
+
+<div id="order">
+<h2>🛒 Заказ</h2>
+<p id="chosen"></p>
+<input id="name" placeholder="Ваше имя">
+<input id="phone" placeholder="Номер телефона">
+<button onclick="send()">📋 Показать заказ</button>
+</div>
+
+<script>
+let pizza="",price=0;
+function buy(p,n){
+pizza=p;price=n;
+document.getElementById("chosen").innerText=p+" — "+n+" ₸";
+document.getElementById("order").style.display="block";
+window.scrollTo(0,document.body.scrollHeight);
+}
+function send(){
+let n=document.getElementById("name").value;
+let t=document.getElementById("phone").value;
+if(!n||!t){alert("Заполните имя и номер телефона");return}
+alert("🍕 Заказ: "+pizza+"\n💰 "+price+" ₸\n👤 "+n+"\n📞 "+t);
+}
+</script>
+
+</body>
+</html>
